@@ -1,7 +1,11 @@
+Below description and commands about Assembler-x86-IA-32 scripts / Ponizej polecenia i krótkie opisy zadan.
+
 1.a Funkcja do wyznaczania kwadratu wartosci parametru, argument przez EAX, wynik przez EAX
+
 1.b. argument przez stos, wynik przez EAX, argument przez stos, wynik przez EAX
 
 2.a. Funkcja do wyznaczania modulo wartosci parametru, argument przez EAX, wynik przez EAX
+
 2.b. Funkcja do wyznaczania modulo wartosci parametru, argument przez stos, wynik przez EAX
 
 3. Napisz program do wyznaczenia liczby elementow o wartosci > 0.
