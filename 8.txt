@@ -1,0 +1,79 @@
+# Funkcja do sprawdzania, czy wartosc parametru jest liczba pierwsza.
+
+.global _start
+.data
+
+.text
+
+FUNCTION:
+		mov 4(%ESP), %EBX 		;/ podzielnik do 1 warunku -> ebx=2
+		mov 8(%ESP), %EAX		;/ liczba do sprawdzenia -> eax=5	
+
+	IS_FIRST:
+		cmp $1, %EAX
+		jle END
+		jmp IS_MODULO
+
+	IS_MODULO:
+		div %EBX 			;/ eax(5) / ebx(2) => eax(2),edx(1)
+		cmp $0, %EDX 		;/ jesli edx = 0   => Nie jest liczba 1-sza
+		je END	
+		mov $66, %ESI 		;/ jesli spelni oba warunki to jest liczba pierwsza			
+		jmp RET
+
+	END:
+		mov $99, %ESI 			;/ 99 = niespelnia warunku
+
+	RET:
+		ret
+	
+_start:
+		push $6			;/ wartosc parametru
+		push $2				;/ warunek I
+
+		call FUNCTION
+
+nop
+
+
+
+
+# Drugi sposób
+
+.global _start
+.data
+	tab: .long 3,3,3,3
+	end_tab:
+
+	.equ tab_bytes, end_tab - tab
+	.equ tab_size, (end_tab - tab)/4
+.text
+
+FUNCTION:
+		mov 4(%ESP), %EBX 			;/ podzielnik do 1 warunku -> ebx = 2
+		mov 8(%ESP), %EAX 			;/ liczba do sprawdzenia -> eax = 3
+
+	IS_FIRST:
+		cmp $1, %EAX 				;/ if eax < 1 => END SCRIPT
+		jle END
+
+	IS_MODULO:
+		div %EBX 			;/ EAX(3) / EBX(2) => EAX(1), EDX(1)
+		cmp $0, %EDX			;/ jesli edx = 0 -> FALSE
+		jmp END
+
+		mov $0, %EAX 			;/ czyscimy rej
+		mov $0, %EDX
+		mov 8(%ESP), %EAX  		;/ ponowne przypisanie
+
+		div %ESI, %EAX 			;/ EAX(3) / ESI(3) => EAX(1), EDX(0)
+		cmp $0, %EDX 			;/ jesli edx = 0  => FALSE
+		jmp END
+		mov $66, %ECX 			;/ jesli jest liczba pierwsza to ecx = 66
+		jmp RET
+
+	END:
+		mov $99, %ECX 		;/ jesli nie pierwsza to ecx = 99
+
+	RET:
+		ret # 1. Funkcja do sprawdzania, czy wartosc parametru jest liczba pierwsza.

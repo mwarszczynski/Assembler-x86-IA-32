@@ -1,0 +1,38 @@
+# Funkcja do wyznaczania wartosci wiekszej z
+# trzech parametrow (parametry przez stos, wynik przez rejestr EAX)
+
+.global _start
+.data
+
+.text
+
+FUNCTION:
+		mov 4(%ESP), %EBX 			;/ ebx = 6
+		mov 8(%ESP), %ECX 			;/ ecx = 4
+		mov 12(%ESP), %EDX 			;/ edx = 8
+
+		cmp %EBX, %ECX 			;/ czy ecx(4) > ebx(6)
+		jg ECX_WIEKSZY 			;/ if ecx(4) > ebx(6) => ECX_WIEKSZY
+
+		cmp %EBX, %EDX 			;/ czy edx(8) > ebx(6) => ECX_WIEKSZY
+		jg ECX_WIEKSZY
+
+		mov %EBX, %EDX
+		jmp END
+
+ECX_WIEKSZY:
+		cmp %ECX, %EDX
+		jg END
+
+
+END:
+		mov %EDX, %EAX
+
+_start:
+		push $4
+		push $6
+		push $8
+
+		call FUNCTION
+
+nop

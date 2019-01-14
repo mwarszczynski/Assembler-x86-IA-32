@@ -1,0 +1,33 @@
+# Funkcja do wyznaczania wartosci wiekszej z
+# dwoch parametrow (parametry przez rejestry EBX, ECX, wynik przez EAX)
+
+.global _start
+.data
+
+.text
+
+FUNCTION:
+		cmp %EBX, %ECX
+		jg ECX_WIEKSZE
+		jmp EBX_WIEKSZE
+
+ECX_WIEKSZE:
+		mov %ECX, %EAX
+		jmp RET
+
+EBX_WIEKSZE:
+		mov %EBX, %EAX
+		jmp RET
+
+RET:
+		xor %EBX, %EBX 			;/ Te dwie linijki opcjonalne
+		xor %ECX, %ECX 			;/ Te dwie linijki opcjonalne
+		ret
+
+_start:
+		mov $4, %EBX 			
+		mov $6, %ECX
+
+		call FUNCTION
+
+nop

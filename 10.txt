@@ -1,0 +1,27 @@
+# Napisz program do sprawdzania, czy wartosci umieszczone w rejestrach EBX,ECX,EDX moga
+# byc dlugosciami bokow trojkata. Wynik (wart 1, ozbacza TAK, lub 0 oznaczajaca NIE) ma 	
+# zostac umeiszczony w rejestrze AL.
+
+.globl _start
+	.data
+	.text
+		_start:
+			mov $5, %EBX
+			mov $5, %ECX
+			mov $6, %EDX
+
+			mov $0, %ESI 		;/ flaga ust na 0
+
+			cmp %EBX, %ECX
+			je CMP 
+			jmp FINISH
+
+CMP:
+			cmp %EBX, %EDX
+			je TAK
+			jmp FINISH
+
+TAK:
+			mov $1, %ESI			
+
+FINISH:

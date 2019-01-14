@@ -1,0 +1,31 @@
+# Napisz program do wyznaczenia liczby elementow o wartosci > 0.
+
+.global _start
+.data
+	tab: .long 1,3,0,1,0,9
+	end_tab:
+
+.equ tab_bytes, end_tab - tab
+.equ tab_size, (end_tab - tab)/4
+
+.text
+_start:
+		xor %EAX, %EAX			;/ 
+		xor %EBX, %EBX 			;/ iterator 4-bitowy
+
+RE:
+		cmp $tab_bytes, %EBX		;/ if x >= [n] => T/F
+		jge END
+
+		cmp $0, tab(%EBX)
+		jle NEXT_ID
+
+		add $1, %ECX
+
+NEXT_ID:
+		add $4, %EBX
+		jmp RE
+
+END:
+
+nop

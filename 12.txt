@@ -1,0 +1,22 @@
+# EBX <- [^ECX^], czyli umiesc w EBX najmniejsza wartosc calkowita, ktorej kwadrat jest
+# wiekszy lub rowny zawartosci rejestru ECX (sprawdzajac kolejne liczby poczawszy od 1,
+# podnoszac je do kwadratu i porownujac z zawartoscia rejestru ECX)
+
+.globl _start
+	.data
+	.text
+		_start:
+			mov $34, %EBX
+			mov $1, %ECX			
+
+LOOP:
+			mov %ECX, %EAX		;/ ECX(1) -> EAX => EAX(1)
+			mul %EAX			;/ EAX(1) * EAX(1) => EAX(1)
+			inc %ECX
+			cmp %EBX, %EAX
+			jl LOOP
+
+			dec %ECX
+			mov %ECX, %ESI
+
+nop

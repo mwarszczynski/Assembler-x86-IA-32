@@ -1,0 +1,22 @@
+# Funkcja do wyznaczania modulo wartosci parametru
+# argument przez stos, wynik przez EAX
+
+.global _start
+.data
+
+.text
+
+FUNCTION:
+		xor %EDX, %EDX
+		mov 4(%ESP), %EAX
+		div %EBX			;/ eax(13) / ebx(4) => eax(3), edx(1)
+		mov %EDX, %EAX
+		ret
+
+_start:
+		push $13
+		mov $4, %EBX
+
+		call FUNCTION
+
+nop

@@ -1,0 +1,29 @@
+# Prosze przedstawic implementacje funkcji wraz z przykladem wywolania
+# do wyznaczania najbardziej znaczacej cyfry rozwiniecia dziesietnego wartosci przekazanej
+# jako parametr przez rejestr EAX. Wynik zwracany rowniez przez rejestr EAX.
+
+.global _start
+.data
+
+.text
+
+FUNCTION:
+		xor %EDX, %EDX
+
+	RE:
+		div %EBX  			
+
+		cmp %EBX, %EAX 		
+		jle END
+		mov $0, %EDX
+		jmp RE
+
+	END:
+		ret
+_start:
+		mov $524168, %EAX
+		mov $10, %EBX
+
+		call FUNCTION
+
+nop

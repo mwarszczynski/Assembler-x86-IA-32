@@ -1,0 +1,40 @@
+# Napisz program do sprawdzania, czy tablica liczb jest posortowana rosnaco.
+
+.global _start
+.data
+	tab: .long 6,15,4,3,2,1
+	end_tab:
+
+.equ tab_bytes, end_tab - tab
+.equ tab_size, (end_tab - tab)/4
+
+.text
+_start:
+		mov $0, %EAX 		;/ iterator bitowy
+		# xor %EDX, %EDX
+
+		# cmp $tab_bytes, %EBX
+		# jge END
+
+		mov tab(%EAX), %EBX
+		add $4, %EAX
+		mov tab(%EAX), %ECX
+
+		cmp %ECX, %EBX 			;/ if EBX > ECX => 6 > 5
+		jl NEXT_ID
+
+	SORTUJ:							
+		# xchg %ECX, %EBX			;/ ebc =5, ebx = 6
+		# mov %ECX, tab(%EAX)
+
+
+		# mov tab(%EAX), %ESI   	;/ testowo - powinno byc 5
+
+		# sub $4, %EAX
+		# mov %EBX, tab(%EAX)
+
+		# mov tab(%EAX), %EDX 		;/ testowo - powinno byc  6
+
+END:
+
+nop

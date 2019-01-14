@@ -1,0 +1,31 @@
+# Napisz program do wypelniania tablicy liczb calkowitych wartosciami kwadratu indeksu  
+# (kolejno: 0,1,4,9,16,25)
+
+.global _start
+.data
+	tab: .long 1,2,3,4,6
+	end_tab:
+
+.equ tab_bytes, end_tab - tab
+.equ tab_size, (end_tab - tab)/4
+
+.text
+_start:
+		mov $0, %EBX 		;/ iterator bitowy
+		xor %EDX, %EDX
+
+	RE:
+		cmp $tab_bytes, %EBX
+		jge END
+
+		mov tab(%EBX), %EAX
+		mul %EAX
+
+		mov %EAX, tab(%EBX)
+		add $4, %EBX
+
+		jmp RE
+
+	END:
+
+nop

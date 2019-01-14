@@ -1,0 +1,17 @@
+# Funkcja do wyznaczania kwadratu wartosci parametru
+# argument przez EAX, wynik przez EAX
+
+.global _start
+.data
+
+.text
+
+FUNCTION:
+		mul %EAX
+		ret
+
+_start:
+		mov $12, %EAX				;/ parametr
+		call FUNCTION
+
+nop

@@ -1,0 +1,36 @@
+# Napisz program do sprawdzania, czy wartosci umieszczone w rejestrach EBX,ECX,EDX moga
+# byc dlugosciami bokow trojkata PROSTOKĄTNEGO. ynik (wart 1, ozbacza TAK, lub 0 oznaczajaca NIE) ma 	
+# zostac umeiszczony w rejestrze AL.
+
+.globl _start
+	.data
+	.text
+		_start:
+			mov $3, %EBX
+			mov $4, %ECX
+			mov $5, %ESI
+
+			mov $0, %EDI 		;/ flaga ust na 0 (warunek)
+
+			mov %EBX, %EAX
+			
+			mul %EBX			;/ EBX(3) * EAX(3) => EAX(9)
+			mov %EAX, %EBX 		;/ ebx jako temp
+
+			mov %ECX, %EAX
+			mul %ECX 			;/ ECX(4) * EAX(4) => EAX(16) 
+			mov %EAX, %ECX 		;/ ECX jako temp
+
+			mov %ESI, %EAX
+			mul %ESI			;/ EAX(5) * EDX(5) => EAX(25)
+
+			add %EBX, %ECX		;/ ECX(16) + EBX (9) => ECX(25)
+
+			cmp %ECX, %EAX
+			je FINISH
+
+			
+FINISH:
+			mov $1, %EDI
+			
+nop
