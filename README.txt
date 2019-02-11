@@ -1,11 +1,35 @@
-AT&T ( GCC, GAS)
+**OS:**
+> Ubuntu
 
-        HOW TO COMPILE
-as --32 --gstabs zad1.s -o zad1.o   -> tworzenie zad1.o
-ld -melf_i386 zad1.o   -> kompilowanie do a.out lub dodanie -o zad.out
-gdb a.out -> uruchomienie a.out
-l -> listing
-l -> listing dalszy
+**Compilator:**
+> GCC, GAS
+
+**Syntax:**
+> AT&T
+
+**Required packages:**
+> suggest latest
+
+**Compilation:**
+> as --32 --gstabs zad1.s -o zad1.o 
+> ld -melf_i386 zad1.o
+> gdb a.out
+
+**Listing in debugger:**
+> l
+
+**Set the break:**
+> b 14
+
+**Run**
+> r
+
+**Info, run:**
+> i
+> r
+
+** Remember to give one empty line below 'NOP'**
+
 b 14 -> breakpoint na 14 lini (przed NOP - za NOP linia wolna)
 r -> run
 i r -> info run
