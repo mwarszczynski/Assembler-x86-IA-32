@@ -1,4 +1,6 @@
-Below description and commands about Assembler-x86-IA-32 scripts / Ponizej polecenia i krótkie opisy zadan.
+ASSEMBLER AT & T ( GCC, GAS )
+
+Below description and commands about Assembler-x86-IA-32 scripts / Ponizej polecenia i krÃ³tkie opisy zadan.
 
 1.a Funkcja do wyznaczania kwadratu wartosci parametru, argument przez EAX, wynik przez EAX
 
