@@ -1,4 +1,15 @@
-ASSEMBLER AT & T ( GCC, GAS )
+AT&T ( GCC, GAS)
+
+        HOW TO COMPILE
+as --32 --gstabs zad1.s -o zad1.o   -> tworzenie zad1.o
+ld -melf_i386 zad1.o   -> kompilowanie do a.out lub dodanie -o zad.out
+gdb a.out -> uruchomienie a.out
+l -> listing
+l -> listing dalszy
+b 14 -> breakpoint na 14 lini (przed NOP - za NOP linia wolna)
+r -> run
+i r -> info run
+
 
 Below description and commands about Assembler-x86-IA-32 scripts / Ponizej polecenia i krótkie opisy zadan.
 
