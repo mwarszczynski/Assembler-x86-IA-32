@@ -37,7 +37,7 @@ r -> run
 i r -> info run
 
 
-Below description and commands about Assembler-x86-IA-32 scripts / Ponizej polecenia i krótkie opisy zadan.
+**Below description and commands about Assembler-x86-IA-32 scripts / Ponizej polecenia i krótkie opisy zadan.**
 
 1.a Funkcja do wyznaczania kwadratu wartosci parametru, argument przez EAX, wynik przez EAX
 
